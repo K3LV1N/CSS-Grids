@@ -1,0 +1,192 @@
+body {
+    font-family: Roboto;
+    font-style : normal;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    font-size: 1.5rem;
+    color: rgb(62, 62, 70);
+    padding-top: 1.2em;
+    padding-bottom: 1.2em; 
+    background-color: rgb(102, 181, 230);
+}
+
+section {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+section > h1 {
+    text-align: center;
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 600;
+    color: rgb(126, 126, 126);
+}
+
+.grid-styling {
+    /* border-width: 0.5em; --> If you add border-width BEFORE the border definition below, the value is never applied. Hi5! */
+    border: solid rgb(233, 233, 233);
+    border-width: 0.5em;
+    margin: 1rem;
+    padding: 0.5em;
+}
+
+.grid-styling > div {
+    font-weight: 600;
+    font-size: 0.9em;      
+    margin: 0.1em;
+    padding: 0.5em;
+    background-color: rgb(246, 103, 132);
+
+    /* The following is to align the context to the center of the div. In this case, the content is the text e.g. 'Area 1' */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* This is where the experimentation starts */
+
+.grid-basic {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+}
+
+.grid-minmax {
+    display: grid;
+    grid-template-rows: minmax(100px, auto);
+    grid-template-columns: minmax(auto, 60%) 1fr 10rem;    
+}
+
+.grid-repeat {
+    display: grid;
+    grid-template-rows: repeat(4, 70px);
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-gaps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    /* grid-row-gap: 20px;
+    grid-column-gap: 5rem; */
+
+    /* The above is equal to the SHORTHAND grid-gap */
+    /* grid-gap: 20px 5rem; */
+
+    /* grid-gap with a single value means the value is applied to both grid-row-gap and grid-column-gap  */
+    grid-gap: 2rem;
+}
+
+.grid-base-line-no {
+    display: grid;
+    grid-template-rows: repeat(3, 2fr);   
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-line-no-move-this {
+    /* grid-row-start: 2;
+    grid-row-end: 3;  
+    grid-column-start: 2;
+    grid-column-end: 3; */
+
+    /* grid-row is SHORTHAND for grid-row-start, grid-row-end */
+    /* grid-row: 2 / 3; */
+
+    /* grid-column is SHORTHAND for grid-column-start and grid-column-end */
+    /* grid-column: 2 / 3; */
+
+    /* grid-area is SHORTHAND for grid-row-start, grid-column-start, grid-row-end, grid-column-end */
+    grid-area: 2 / 2 / 3 / 3;
+    /* grid-area: 3 / 2 / 4 / 3; PLAY */
+}
+
+.grid-base-span-rows-cols {
+    display: grid;
+    grid-template-rows: repeat(3, 2fr);   
+    grid-template-columns: repeat(2, 1fr);    
+}
+
+.grid-span-rows-cols-span-row-this {
+    /* grid-row-start: 1;
+    grid-row-end: 4; */
+
+    /* SHORTHAND for the above */
+    /* grid-row: 1 / 4; */
+
+    /* Using the SPAN keyword */
+    grid-row: 1 / span 3;
+}
+
+.grid-span-rows-cols-span-col-this {
+    /* grid-column-start: 1;
+    grid-column-end: 3; */
+
+    /* SHORTHAND for the above */
+    /* grid-column: 1 / 3; */
+
+    /* Using the SPAN keyword */
+    grid-column: 1 / span 2;
+}
+
+.grid-base-line-names {
+    display: grid;
+    grid-template-rows: [row-1-start] 2fr [row-2-start] 2fr [row-2-end];
+    grid-template-columns: [col-1-start] 2fr [col-2-start] 2fr [col-3-start] 2fr [col-3-end];
+}
+
+.grid-line-names-move-this {
+    /* grid-row-start: row-2-start;
+    grid-row-end: row-2-end;
+    grid-column-start: col-3-start;
+    grid-column-end: col-3-end; */
+
+    /* SHORTHAND for the above */
+    grid-row: row-2-start / row-2-end;
+    grid-column: col-3-start / col-3-end;
+}
+
+.grid-base-line-same-names {
+    display: grid;
+    grid-template-rows: repeat(3, [row-start] 1fr [row-end]);
+    grid-template-columns: repeat(3, [col-start] 1fr [col-end]);
+}
+
+.grid-line-same-names-move-this {
+    grid-row: row-start 2 / row-end 3;
+    grid-column: col-start / col-start 3;
+}
+
+.grid-base-grid-areas {
+    display: grid;
+    grid-template-areas: "header header"
+                         "content right-sidebar"
+                         "footer footer";
+    grid-template-rows: 200px 1fr 100px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.grid-areas-header {
+    grid-row-start: header;
+    grid-row-end: header;
+    grid-column-start: header;
+    grid-column-end: header;
+}
+
+.grid-areas-content {
+    grid-area: content;
+}
+
+.grid-areas-sidebar {
+    grid-area: right-sidebar;
+}
+
+.grid-areas-footer {
+    grid-row: footer;
+    grid-column: footer;
+}
+
